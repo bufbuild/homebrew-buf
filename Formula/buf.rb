@@ -1,15 +1,15 @@
 class Buf < Formula
   desc "A new way of working with Protocol Buffers."
   homepage "https://buf.build"
-  version "0.4.1"
+  version "0.5.0"
   bottle :unneeded
 
   if OS.mac?
-    url "https://github.com/bufbuild/buf/releases/download/v0.4.1/buf-Darwin-x86_64.tar.gz"
-    sha256 "d2c15196a255f1404be3023b573611c9444a311e1df6e0013b5a6c2467a6cfff"
+    url "https://github.com/bufbuild/buf/releases/download/v0.5.0/buf-Darwin-x86_64.tar.gz"
+    sha256 "e900293dd9681820b171c4b44f93403f91cb45c534b98d75684ce9b61825963a"
   elsif OS.linux?
-    url "https://github.com/bufbuild/buf/releases/download/v0.4.1/buf-Linux-x86_64.tar.gz"
-    sha256 "1dc05e79e82326dbd9633eb240975dbd69a41758fec49f579d390ba8c08d95ed"
+    url "https://github.com/bufbuild/buf/releases/download/v0.5.0/buf-Linux-x86_64.tar.gz"
+    sha256 "20675856e1f638f866297d31095db4cf9bd329dba267f034c88801f2179c807e"
   end
 
   def install
