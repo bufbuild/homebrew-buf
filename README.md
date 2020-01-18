@@ -5,6 +5,5 @@ This provides a [Homebrew](https://brew.sh) tap for [Buf](https://github.com/buf
 ## Usage
 
 ```
-brew tap bufbuild/buf
-brew install buf
+brew install bufbuild/buf/buf
 ```
