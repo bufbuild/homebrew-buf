@@ -7,3 +7,9 @@ This provides a [Homebrew](https://brew.sh) tap for [Buf](https://github.com/buf
 ```
 brew install bufbuild/buf/buf
 ```
+
+## Update
+
+```
+bash update.bash 0.9.0
+```
