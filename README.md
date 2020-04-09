@@ -11,5 +11,5 @@ brew install bufbuild/buf/buf
 ## Update
 
 ```
-bash update.bash 0.9.0
+bash update.bash 0.11.0
 ```
