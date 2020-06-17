@@ -51,5 +51,3 @@ class Buf < Formula
   end
 end
 EOF
-
-sed -i '' "s/bash update.bash .*/bash update.bash ${VERSION}/" README.md
