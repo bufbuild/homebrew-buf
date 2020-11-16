@@ -2,9 +2,9 @@ class Buf < Formula
   desc "A new way of working with Protocol Buffers."
   homepage "https://buf.build"
   head "https://github.com/bufbuild/buf.git"
-  url "https://github.com/bufbuild/buf/archive/v0.30.1.tar.gz"
-  sha256 "a750d0fd928d0334c12d4d99a1357061e7d7de292db5d39d59140f0661875e8c"
-  version "0.30.1"
+  url "https://github.com/bufbuild/buf/archive/v0.31.0.tar.gz"
+  sha256 "f191423ebc988d31db44aec307b2884178750f9da94ba91e9a12acc6e2d3c214"
+  version "0.31.0"
 
   depends_on "go" => :build
 
