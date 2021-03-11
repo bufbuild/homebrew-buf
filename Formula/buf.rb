@@ -10,6 +10,7 @@ class Buf < Formula
 
   def install
     ENV["GOPATH"] = HOMEBREW_CACHE/"go_cache"
+    ENV["GOENV"] = HOMEBREW_CACHE/"../../../Library/Application Support/go/env"
     system "sh", "make/buf/scripts/brew.sh", ".build/brew"
     prefix.install Dir[".build/brew/*"]
   end
