@@ -33,7 +33,7 @@ cat <<EOF >Formula/buf.rb
 class Buf < Formula
   desc "A new way of working with Protocol Buffers."
   homepage "https://buf.build"
-  head "https://github.com/bufbuild/buf.git"
+  head "https://github.com/bufbuild/buf.git", branch: "main"
   url "${URL}"
   sha256 "${SHA256}"
   version "${VERSION}"
