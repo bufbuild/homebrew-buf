@@ -1,0 +1,39 @@
+name: Create Release PR
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        type: string
+        description: The version you intend to release (eg x.y.z)
+env:
+  VERSION: ${{ github.event.inputs.version }}
+  # TODO
+  # APP_ID: 257240
+  APP_ID: 417207
+jobs:
+  perform:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.version != '' }}
+    steps:
+      - name: Get GitHub app token
+        uses: actions/create-github-app-token@v1
+        id: app_token
+        with:
+          app-id: ${{ env.APP_ID }}
+          private-key: ${{ secrets.TOKEN_EXCHANGE_GH_APP_PRIVATE_KEY }}
+      - name: Checkout repository code
+        uses: actions/checkout@v3
+      - name: Update Buf
+        run: bash update.bash "${VERSION}"
+      - name: Create PR
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          BRANCH="release/v${VERSION}"
+          git switch -C ${BRANCH}
+          git add .
+          git commit -m "Update version to ${VERSION}"
+          git push --set-upstream origin --force ${BRANCH} 
+          gh pr create --title "Release v${VERSION}" --body "Release prepared for ${VERSION}"
+        env:
+          GH_TOKEN: ${{ steps.app_token.outputs.token }}
