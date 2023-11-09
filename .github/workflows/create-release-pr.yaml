@@ -13,6 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event.inputs.version != '' }}
     steps:
+      - name: Validate Buf Version
+        if: ${{ startsWith(inputs.buf_version, 'v') }}
+        run: |
+          echo "error: buf version must not start with 'v'."
+          exit 1
       - name: Get GitHub app token
         uses: actions/create-github-app-token@v1
         id: app_token
