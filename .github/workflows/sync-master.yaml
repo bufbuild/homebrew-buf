@@ -2,28 +2,14 @@ name: Sync Main to Master
 on:
   pull_request:
     types: [ closed ]
-
-env:
-  VERSION: ${{ github.event.inputs.version }}
-  # TODO
-  # APP_ID: 257240
-  APP_ID: 417207
-
 jobs:
   update-master:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release') && github.base_ref == 'main'
     steps:
-      - name: Get GitHub app token
-        uses: actions/create-github-app-token@v1
-        id: app_token
-        with:
-          app-id: ${{ env.APP_ID }}
-          private-key: ${{ secrets.TOKEN_EXCHANGE_GH_APP_PRIVATE_KEY }}
       - name: Checkout repository code
         uses: actions/checkout@v3
         with:
-          token: ${{ steps.app_token.outputs.token }}
           fetch-depth: 0
       - name: Update master
         # we keep master around because homebrew cannot deal with the rename

@@ -7,9 +7,7 @@ on:
         description: The version you intend to release (eg x.y.z)
 env:
   VERSION: ${{ github.event.inputs.version }}
-  # TODO
-  # APP_ID: 257240
-  APP_ID: 417207
+  APP_ID: 257240
 jobs:
   perform:
     runs-on: ubuntu-latest
