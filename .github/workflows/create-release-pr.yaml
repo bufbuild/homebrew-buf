@@ -26,6 +26,8 @@ jobs:
           private-key: ${{ secrets.TOKEN_EXCHANGE_GH_APP_PRIVATE_KEY }}
       - name: Checkout repository code
         uses: actions/checkout@v3
+        with:
+          token: ${{ steps.app_token.outputs.token }}
       - name: Update Buf
         run: bash update.bash "${VERSION}"
       - name: Create PR

@@ -2,6 +2,8 @@ name: Sync Main to Master
 on:
   pull_request:
     types: [ closed ]
+permissions:
+  contents: write
 jobs:
   update-master:
     runs-on: ubuntu-latest
@@ -11,6 +13,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Update master
         # we keep master around because homebrew cannot deal with the rename
         run: |
