@@ -1,0 +1,20 @@
+name: Sync Main to Master
+on:
+  pull_request:
+    types: [ closed ]
+jobs:
+  update-master:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release') && github.base_ref == 'main'
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Update master
+        # we keep master around because homebrew cannot deal with the rename
+        run: |
+          git switch master
+          git pull origin master
+          git merge main
+          git push origin master
