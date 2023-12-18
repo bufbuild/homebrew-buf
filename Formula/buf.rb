@@ -1,5 +1,5 @@
 class Buf < Formula
-  desc "The ultimate tool for working with Protocol Buffers."
+  desc "The best way of working with Protocol Buffers."
   homepage "https://buf.build"
   head "https://github.com/bufbuild/buf.git", branch: "main"
   url "https://github.com/bufbuild/buf/archive/v1.28.1.tar.gz"
