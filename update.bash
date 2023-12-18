@@ -31,7 +31,7 @@ rm -rf Formula
 mkdir -p Formula
 cat <<EOF >Formula/buf.rb
 class Buf < Formula
-  desc "A new way of working with Protocol Buffers."
+  desc "The ultimate tool for working with Protocol Buffers."
   homepage "https://buf.build"
   head "https://github.com/bufbuild/buf.git", branch: "main"
   url "${URL}"
