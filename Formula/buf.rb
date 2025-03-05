@@ -1,15 +1,15 @@
 class Buf < Formula
   desc "The best way of working with Protocol Buffers."
   homepage "https://buf.build"
-  version "1.48.0"
+  version "1.50.0"
   url "https://github.com/bufbuild/buf/releases/download/v#{version}/buf-Darwin-arm64"
-  sha256 "6ef7df6116c72ef3ccaa8574c9b8008389f0911c1921da4689e0abff3924a4bd"
+  sha256 "4a215517d0bcb37c47b9178e2668d7651a7fef9a482cef482227ad09796cdfc0"
 
   checksums = {
-    "darwin-arm64" => "6ef7df6116c72ef3ccaa8574c9b8008389f0911c1921da4689e0abff3924a4bd",
-    "darwin-x86_64" => "5af7155250ad8af5f0a2f5701d1df83bfece53dfe98f13b3768d808468fcdbde",
-    "linux-arm64" => "76b531e2c29be3b0ddf8b1034126b56506532b47c98b3968a49f09432536f39d",
-    "linux-x86_64" => "30cbac88a3cdda6e48dcf727f3cf9d2669d771c5d5be94f37e202c76a522b66e",
+    "darwin-arm64" => "4a215517d0bcb37c47b9178e2668d7651a7fef9a482cef482227ad09796cdfc0",
+    "darwin-x86_64" => "baaf26b33519fe4494729aab9b02cea449a134ed028b5c21d16ca42734da76e4",
+    "linux-arm64" => "5d630153d4d7aae1093f964ed15f1391ce9288f2d4192a4818c18443b3565bbf",
+    "linux-x86_64" => "154ea883ce098eac4fa106ff9ee4e4964bb97f809dd8ec9c34a432b466ce1494",
   }
 
   on_macos do
