@@ -1,31 +1,36 @@
 class Bufstream < Formula
   desc "Drop-in replacement for Apache Kafka with improved data quality and lower costs"
   homepage "https://buf.build/product/bufstream"
-  url "https://buf.build/dl/bufstream/v0.3.11/bufstream-v0.3.11-Darwin-arm64" # Default URL for stable bottle generation
-  version "0.3.11"
-  sha256 "dde00e3eaa0b80f4e4e775845b4ee62b9e6e59f0a4c99d606fa992db4afaa328" # Default SHA for the above URL
+  version "0.3.12"
+  url "https://buf.build/dl/bufstream/v#{version}/bufstream-v#{version}-Darwin-arm64" # Default URL for stable bottle generation
+  sha256 "30b3f9169fcc9ac11043c9e9d81334659b97e49c07a15bf1c35a1c696e7eb65c" # Default SHA for the above URL
 
-  # macOS architecture-specific downloads
+  checksums = {
+    "darwin-arm64" => "30b3f9169fcc9ac11043c9e9d81334659b97e49c07a15bf1c35a1c696e7eb65c",
+    "darwin-x86_64" => "999c70572d9761b5edc1bc90ab9d6da0a766e8449765b06fe77b04d7e4858359",
+    "linux-arm64" => "a2ed8582e728b63bfcb6117a4134ac80e118bdfa1f8566685cab3ec9ed5e3ac5",
+    "linux-x86_64" => "d7111074ce5cba9827139884484f861dba53c6f1ca3be29f6f5d7247a2e45894",
+  }
+
   on_macos do
     on_intel do
       url "https://buf.build/dl/bufstream/v#{version}/bufstream-v#{version}-Darwin-x86_64"
-      sha256 "04fdaa56c9bd193341f551008b8d27c04aacf028330374c57f5a6e5769da9e92"
+      sha256 checksums["darwin-x86_64"]
     end
     on_arm do
       url "https://buf.build/dl/bufstream/v#{version}/bufstream-v#{version}-Darwin-arm64"
-      sha256 "dde00e3eaa0b80f4e4e775845b4ee62b9e6e59f0a4c99d606fa992db4afaa328"
+      sha256 checksums["darwin-arm64"]
     end
   end
 
-  # Linux architecture-specific downloads
   on_linux do
     on_intel do
       url "https://buf.build/dl/bufstream/v#{version}/bufstream-v#{version}-Linux-x86_64"
-      sha256 "892c90dbc8bf9400ddbac900c2e40d8c184519325d61d2757ce794e4c8f4ec4a"
+      sha256 checksums["linux-x86_64"]
     end
     on_arm do
       url "https://buf.build/dl/bufstream/v#{version}/bufstream-v#{version}-Linux-aarch64"
-      sha256 "ad80b4252992b580fd949e3352ca43eb7ae0d7dd4282c0ab017b57355d38f442"
+      sha256 checksums["linux-arm64"]
     end
   end
 
