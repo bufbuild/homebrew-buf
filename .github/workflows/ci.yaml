@@ -17,7 +17,7 @@ jobs:
       - run: brew install --build-from-source Formula/buf.rb
       - run: buf --version
   darwin-x86_64:
-    runs-on: macos-13
+    runs-on: macos-15-intel
     steps:
       - uses: actions/checkout@v4
       - run: brew install --build-from-source Formula/buf.rb
