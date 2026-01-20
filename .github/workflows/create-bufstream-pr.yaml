@@ -1,0 +1,46 @@
+name: Create Bufstream Release
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        type: string
+        description: The version you intend to release (eg x.y.z)
+env:
+  VERSION: ${{ github.event.inputs.version }}
+jobs:
+  update-formula:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout tap
+        uses: actions/checkout@v4
+        with:
+          path: base
+      - name: Update formula
+        run: |
+          # Darwin arm64
+          curl -LO https://buf.build/dl/bufstream/v${VERSION}/bufstream-v${VERSION}-Darwin-arm64
+          SHA256=$(shasum -a 256 bufstream-v${VERSION}-Darwin-arm64 | awk '{print $1}')
+          sed -i "s/version \".*\"/version \"$VERSION\"/" base/Formula/bufstream.rb
+          sed -i "s/sha256 \".*\"/sha256 \"$SHA256\"/" base/Formula/bufstream.rb
+          sed -i "s/\"darwin-arm64\" => \".*\"/\"darwin-arm64\" => \"$SHA256\"/" base/Formula/bufstream.rb
+          # Darwin x86_64
+          curl -LO https://buf.build/dl/bufstream/v${VERSION}/bufstream-v${VERSION}-Darwin-x86_64
+          SHA256=$(shasum -a 256 bufstream-v${VERSION}-Darwin-x86_64 | awk '{print $1}')
+          sed -i "s/\"darwin-x86_64\" => \".*\"/\"darwin-x86_64\" => \"$SHA256\"/" base/Formula/bufstream.rb
+          # Linux arm64
+          curl -LO https://buf.build/dl/bufstream/v${VERSION}/bufstream-v${VERSION}-Linux-aarch64
+          SHA256=$(shasum -a 256 bufstream-v${VERSION}-Linux-aarch64 | awk '{print $1}')
+          sed -i "s/\"linux-arm64\" => \".*\"/\"linux-arm64\" => \"$SHA256\"/" base/Formula/bufstream.rb
+          # Linux x86_64
+          curl -LO https://buf.build/dl/bufstream/v${VERSION}/bufstream-v${VERSION}-Linux-x86_64
+          SHA256=$(shasum -a 256 bufstream-v${VERSION}-Linux-x86_64 | awk '{print $1}')
+          sed -i "s/\"linux-x86_64\" => \".*\"/\"linux-x86_64\" => \"$SHA256\"/" base/Formula/bufstream.rb
+      - name: Create PR
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: Update bufstream to v${{ github.event.inputs.version }}
+          title: Update bufstream to v${{ github.event.inputs.version }}
+          body: |
+            Update bufstream to v${{ github.event.inputs.version }}
+          branch: update-bufstream-${{ github.event.inputs.version }}
+          path: base
