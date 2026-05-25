@@ -30,5 +30,6 @@ jobs:
       - uses: actions/checkout@v6
       - name: Setup Homebrew
         uses: Homebrew/actions/setup-homebrew@main
+      - run: brew install bubblewrap
       - run: brew install --build-from-source Formula/buf.rb
       - run: buf --version
