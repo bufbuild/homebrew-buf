@@ -31,4 +31,6 @@ jobs:
       - name: Setup Homebrew
         uses: Homebrew/actions/setup-homebrew@main
       - run: brew install --build-from-source Formula/buf.rb
+        env:
+          HOMEBREW_NO_SANDBOX_LINUX: 1
       - run: buf --version
