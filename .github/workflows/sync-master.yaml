@@ -18,6 +18,5 @@ jobs:
         # we keep master around because homebrew cannot deal with the rename
         run: |
           git switch master
-          git pull origin master
-          git merge main
+          git reset --hard main
           git push origin master
